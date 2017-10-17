@@ -42,7 +42,7 @@
     <div id="instafeed"></div>
     <script src="words.json"></script>
     <script>
-        var start = new Date(2017, 9, 10);
+        var start = new Date(2017, 10, 1);
         var timeDiff = new Date().getTime() - start.getTime();
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
         if(diffDays <0){
@@ -51,6 +51,19 @@
             document.getElementById("word").innerHTML = words[diffDays];
             // document.getElementById("word").style.fontSize = 40 + (20 - words[diffDays].length/2);
         }
+
+        function shuffle(a) {
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+        }
+        
+        console.log(JSON.stringify(shuffle(words)));
+        console.log(words);
     </script>
 </body>
 </html>
