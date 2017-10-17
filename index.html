@@ -9,6 +9,8 @@
             font-family: sans-serif;
             text-align: center;
             padding-top: 60px;
+            color: white;
+            background-color: black;
         }
         h2{
             font-family: 'Permanent Marker', cursive;
@@ -19,6 +21,9 @@
             padding-top: 20px;
             margin-bottom: -40px;
             font-weight: 100;
+        }
+        .hidden{
+            display: none;
         }
         @media (min-width: 600px) {
             body{
@@ -34,22 +39,29 @@
 <body>
 
     <h1>#inktober_forever</h1>
+    <div id="waiting" class="hidden">
+            <div class="headline">Begins in...</div>
+            <h2 id="days"></h2>
+    </div>
+    <div id="page" class="hidden">
+        <div class="headline">Today's word...</div>
+        <h2 id="word"></h2>
 
-    <div class="headline">Today's word...</div>
-    <h2 id="word"></h2>
+        <p>Share on Instagram with <a href="https://www.instagram.com/explore/tags/inktober_forever/">#inktober_forever</a></p>
+    </div>
 
-    <p>Share on Instagram with <a href="https://www.instagram.com/explore/tags/inktober_forever/">#inktober_forever</a></p>
-    <div id="instafeed"></div>
     <script src="words.json"></script>
     <script>
-        var start = new Date(2017, 10, 1);
+        var start = new Date(2017, 9, 19);
         var timeDiff = new Date().getTime() - start.getTime();
         var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
         if(diffDays <0){
-            document.getElementById("word").innerHTML = "anticipation";
+            document.getElementById("days").innerHTML = "" + Math.abs(diffDays) + " days";
+            document.getElementById("waiting").classList.remove("hidden");
         } else {
             document.getElementById("word").innerHTML = words[diffDays];
             // document.getElementById("word").style.fontSize = 40 + (20 - words[diffDays].length/2);
+            document.getElementById("page").classList.remove("hidden");
         }
 
         function shuffle(a) {
