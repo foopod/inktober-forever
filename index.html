@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Inktober Forever</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: sans-serif;
+            text-align: center;
+            padding-top: 60px;
+        }
+        h2{
+            font-family: 'Permanent Marker', cursive;
+            font-size:60px;
+            margin-top:0.3em;
+        }
+        .headline{
+            padding-top: 20px;
+            margin-bottom: -40px;
+            font-weight: 100;
+        }
+        @media (min-width: 600px) {
+            body{
+                font-size:200%;
+            }
+            h2{
+                font-size:130px;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+
+    <h1>#inktober_forever</h1>
+
+    <div class="headline">Today's word...</div>
+    <h2 id="word"></h2>
+
+    <p>Share on Instagram with <a href="https://www.instagram.com/explore/tags/inktober_forever/">#inktober_forever</a></p>
+    <div id="instafeed"></div>
+    <script src="words.json"></script>
+    <script>
+        var start = new Date(2017, 9, 10);
+        var timeDiff = new Date().getTime() - start.getTime();
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+        if(diffDays <0){
+            document.getElementById("word").innerHTML = "anticipation";
+        } else {
+            document.getElementById("word").innerHTML = words[diffDays];
+            // document.getElementById("word").style.fontSize = 40 + (20 - words[diffDays].length/2);
+        }
+    </script>
+</body>
+</html>
